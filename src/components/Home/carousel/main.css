@@ -1,11 +1,14 @@
 .carousel {
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .car-show {
     width: 100rem;
     display: flex;
+    transition-property: margin-left;
+    transition-duration: 0.5s;
 }
 
 .car-show li {
@@ -43,6 +46,28 @@
 }
 
 .car-content div {
-    color: rgb(255, 255, 255, 0.3);
-    font-size: 0.32rem;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 0.28rem;
+}
+
+.car-control {
+    position: absolute;
+    bottom: 0.35rem;
+    right: 0.5rem;
+    display: flex;
+}
+
+.car-control li {
+    width: 0.08rem;
+    height: 0.08rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 0.04rem;
+    margin: 0 0.1rem;
+    transition: width 0.5s;
+}
+
+.car-control li.cut {
+    width: 0.4rem;
+    background-color: white;
+    border-radius: 0.04rem;
 }
