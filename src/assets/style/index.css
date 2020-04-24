@@ -1,0 +1,13 @@
+/**
+ * @author City
+ * @description 样式出口文件
+ */
+
+/* 全局变量 */
+@import "./variable.css";
+
+/* 重置样式表 */
+@import "./reset.css";
+
+/* 全局样式 */
+@import "./global.css";
