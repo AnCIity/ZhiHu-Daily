@@ -16,7 +16,7 @@ export const getOlds = time => axios.get(`${base.link}stories/before/${time}`);
 export const getAction = id => axios.get(`${base.link}story/${id}`);
 
 // 长评
-export const getLoginComment = id => axios.get(`${base.link}story/${id}/long-comments`);
+export const getLongComment = id => axios.get(`${base.link}story/${id}/long-comments`);
 
 // 短评
 export const getShortComment = id => axios.get(`${base.link}story/${id}/short-comments`);

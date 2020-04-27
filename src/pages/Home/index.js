@@ -8,32 +8,66 @@ import "./main.css";
 import { getNews } from "../../api/index";
 
 /* 组件 */
-import Head from "../../components/Home/head/index";
-import Carousel from "../../components/Home/carousel/index";
+import HomeHead from "../../components/Home/home-head/index";
+import Carousel from "../../components/common/carousel/index";
+import ArticleList from "../../components/Home/article-list/index";
 
 export default class Home extends Component {
     constructor() {
         super();
         this.state = {
-            news: {}
+            news: {},
+            articles: []
         };
+        this.isLoad = true;
+        this.n = 0;
     }
 
     componentDidMount() {
         getNews().then(res => {
             this.setState({
-                ...this.state,
                 news: res.data
             });
         });
     }
 
+    loadArticle(bool = null) {
+        if (bool === null) return this.isLoad;
+        this.isLoad = bool;
+    }
+
+    addArticles(data) {
+        this.setState({
+            articles: [...this.state.articles, data]
+        });
+    }
+
     render() {
-        const { news } = this.state;
+        const { news, articles } = this.state;
         return (
             <div className="home">
-                <Head></Head>
+                <HomeHead></HomeHead>
                 <Carousel top_stories={news.top_stories}></Carousel>
+                <div className="home-article">
+                    <ArticleList
+                        key="today"
+                        loadArticle={e => this.loadArticle(e)}
+                        addArticles={e => this.addArticles(e)}
+                        n={() => this.n++}
+                        stories={news.stories}
+                    ></ArticleList>
+                    {articles &&
+                        articles.map(value => (
+                            <ArticleList
+                                key={value.date}
+                                loadArticle={e => this.loadArticle(e)}
+                                addArticles={e => this.addArticles(e)}
+                                n={() => this.n++}
+                                time={value.date}
+                                stories={value.stories}
+                            ></ArticleList>
+                        ))}
+                </div>
             </div>
         );
     }

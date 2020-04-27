@@ -1,10 +1,15 @@
 .home header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: var(--width);
     height: 1.2rem;
     overflow: hidden;
     padding: 0.1rem 0;
+    background-color: white;
 }
 
-.head-date {
+.home-head-date {
     float: left;
     width: 1.2rem;
     height: 1rem;
@@ -14,17 +19,17 @@
     color: #333;
 }
 
-.head-day {
+.home-head-day {
     font-weight: bold;
     font-size: 0.42rem;
     margin: 0.1rem 0 0.15rem;
 }
 
-.head-month {
+.home-head-month {
     font-size: 0.28rem;
 }
 
-.head-hello {
+.home-head-hello {
     float: left;
     line-height: 1.2rem;
     font-size: 0.5rem;
@@ -32,11 +37,11 @@
     font-weight: bold;
 }
 
-.head-portrait {
+.home-head-portrait {
     float: right;
 }
 
-.head-portrait img {
+.home-head-portrait img {
     width: 0.8rem;
     height: 0.8rem;
     padding: 0.2rem 0.4rem;

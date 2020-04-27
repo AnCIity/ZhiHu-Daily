@@ -1,16 +1,14 @@
 /**
  * @author City
- * @description 头部
+ * @description 首页头部
  */
 
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./main.css";
 
-export default class Head extends Component {
-    constructor() {
-        super();
-        this.state = {};
-    }
+class HomeHead extends Component {
+    /* Method */
 
     getDay() {
         return new Date().getDate();
@@ -43,15 +41,17 @@ export default class Head extends Component {
     render() {
         return (
             <header>
-                <div className="head-date">
-                    <div className="head-day">{this.getDay()}</div>
-                    <div className="head-month">{this.getMonth()}</div>
+                <div className="home-head-date">
+                    <div className="home-head-day">{this.getDay()}</div>
+                    <div className="home-head-month">{this.getMonth()}</div>
                 </div>
-                <div className="head-hello">{this.getHello()}</div>
-                <div className="head-portrait">
-                    <img src="http://q1.qlogo.cn/g?b=qq&nk=11241066&s=100" alt="头像" />
+                <div className="home-head-hello">{this.getHello()}</div>
+                <div className="home-head-portrait">
+                    <img src="http://q1.qlogo.cn/g?b=qq&nk=11241066&s=100" alt="头像" onClick={() => this.props.history.push("/my")} />
                 </div>
             </header>
         );
     }
 }
+
+export default withRouter(HomeHead);

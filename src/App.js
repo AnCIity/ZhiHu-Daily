@@ -12,8 +12,8 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/home" component={asyncComponent(() => import("./pages/Home/index"))}></Route>
-                <Route path="/article" component={asyncComponent(() => import("./pages/Article/index"))}></Route>
-                <Route path="/comment" component={asyncComponent(() => import("./pages/Comment/index"))}></Route>
+                <Route path="/article/:id" component={asyncComponent(() => import("./pages/Article/index"))}></Route>
+                <Route path="/comment/:id" component={asyncComponent(() => import("./pages/Comment/index"))}></Route>
                 <Route path="/my" component={asyncComponent(() => import("./pages/My/index"))}></Route>
                 <Route path="/collect" component={asyncComponent(() => import("./pages/Collect/index"))}></Route>
                 <Redirect to="/home"></Redirect>

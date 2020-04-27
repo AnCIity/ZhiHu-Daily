@@ -5,9 +5,10 @@
  */
 
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./main.css";
 
-export default class Carousel extends Component {
+class Carousel extends Component {
     constructor() {
         super();
         this.state = {
@@ -15,6 +16,22 @@ export default class Carousel extends Component {
         };
         this.Timer = 0;
         this.show = React.createRef();
+    }
+
+    componentDidMount() {
+        /* 定时切换索引 */
+        this.Timer = setInterval(() => {
+            this.cutIndex(this.state.index + 1);
+        }, 4000);
+
+        this.show.current.addEventListener("touchstart", () => console.log("触摸开始"), false);
+        this.show.current.addEventListener("touchmove", () => console.log("移动中"), false);
+        this.show.current.addEventListener("touchend", () => console.log("触摸结束"), false);
+    }
+
+    componentWillUnmount() {
+        /* 清楚定时器 */
+        clearInterval(this.Timer);
     }
 
     /* Method */
@@ -48,27 +65,17 @@ export default class Carousel extends Component {
         }
     }
 
-    clearTransition(num) {}
-
-    /* Life Cycle */
-
-    componentDidMount() {
-        /* 定时切换索引 */
-        this.Timer = setInterval(() => {
-            this.cutIndex(this.state.index + 1);
-        }, 4000);
+    toArticle(id) {
+        this.props.history.push("/article/" + id);
     }
 
-    componentWillUnmount() {
-        /* 清楚定时器 */
-        clearInterval(this.Timer);
-    }
+    // clearTransition(num) {}
 
     /* Generate DOM */
 
     generateShow(value) {
         return (
-            <li key={value.id}>
+            <li key={value.id} onClick={() => this.toArticle(value.id)}>
                 <img src={value.image} alt="value.title" />
                 <div className="car-shadow" style={{ backgroundImage: `linear-gradient(rgba(255, 255, 255, 0), #${value.image_hue.slice(2)} 60%)` }}>
                     <div className="car-content">
@@ -100,3 +107,5 @@ export default class Carousel extends Component {
         );
     }
 }
+
+export default withRouter(Carousel);
