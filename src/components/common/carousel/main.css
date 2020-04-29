@@ -5,10 +5,8 @@
 }
 
 .car-show {
-    width: 100rem;
     display: flex;
-    transition-property: margin-left;
-    transition-duration: 0.5s;
+    transition-property: transform;
 }
 
 .car-show li {
@@ -38,6 +36,8 @@
     box-sizing: border-box;
     padding: 0.4rem;
     line-height: 0.6rem;
+    user-select: none;
+    pointer-events: none;
 }
 
 .car-content h2 {
@@ -55,14 +55,14 @@
     font-size: 0.28rem;
 }
 
-.car-control {
+.car-nav {
     position: absolute;
     bottom: 0.35rem;
     right: 0.5rem;
     display: flex;
 }
 
-.car-control li {
+.car-nav li {
     width: 0.08rem;
     height: 0.08rem;
     background-color: rgb(255, 255, 255, 0.6);
@@ -71,7 +71,7 @@
     transition: width 0.5s;
 }
 
-.car-control li.cut {
+.car-nav li.cut {
     width: 0.4rem;
     background-color: white;
     border-radius: 0.04rem;
