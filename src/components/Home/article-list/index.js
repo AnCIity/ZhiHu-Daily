@@ -65,6 +65,7 @@ class ArticleList extends Component {
 
     render() {
         const { time, stories } = this.props;
+        console.log(time, stories);
 
         return (
             <div className="article-list" ref={this.element}>
@@ -77,20 +78,17 @@ class ArticleList extends Component {
                 )}
                 {/* 日报列表 */}
                 <ul>
-                    {stories &&
-                        stories.map(value => {
-                            return (
-                                <li key={value.id} onClick={() => this.toArticle(value.id)}>
-                                    <div className="article-list-left">
-                                        <h3>{value.title}</h3>
-                                        <p>{value.hint}</p>
-                                    </div>
-                                    <div className="article-list-right">
-                                        <img src={value.images[0]} alt={value.title} />
-                                    </div>
-                                </li>
-                            );
-                        })}
+                    {stories?.map(value => {
+                        return (
+                            <li key={value.id} onClick={() => this.toArticle(value.id)}>
+                                <div className="article-list-left">
+                                    <h3>{value.title}</h3>
+                                    <p>{value.hint}</p>
+                                </div>
+                                <div className="article-list-right">{value.images && <img src={value.images[0]} alt={value.title} />}</div>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         );

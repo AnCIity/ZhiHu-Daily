@@ -8,9 +8,9 @@ import "./main.css";
 import { getNews } from "../../api/index";
 
 /* 组件 */
-import HomeHead from "../../components/home/home-head/index";
+import HomeHead from "../../components/Home/home-head/index";
 import Carousel from "../../components/common/carousel/index";
-import ArticleList from "../../components/home/article-list/index";
+import ArticleList from "../../components/Home/article-list/index";
 
 export default class Home extends Component {
     constructor() {
@@ -49,13 +49,7 @@ export default class Home extends Component {
                 <HomeHead></HomeHead>
                 <Carousel data={news.top_stories}></Carousel>
                 <div className="home-article">
-                    <ArticleList
-                        key="today"
-                        loadArticle={e => this.loadArticle(e)}
-                        addArticles={e => this.addArticles(e)}
-                        n={() => this.n++}
-                        stories={news.stories}
-                    ></ArticleList>
+                    <ArticleList key="today" loadArticle={e => this.loadArticle(e)} addArticles={e => this.addArticles(e)} n={() => this.n++} stories={news.stories}></ArticleList>
                     {articles &&
                         articles.map(value => (
                             <ArticleList

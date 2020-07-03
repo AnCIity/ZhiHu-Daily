@@ -9,7 +9,7 @@ import React, { Component } from "react";
 import "./main.css";
 import { getLongComment, getShortComment } from "../../api/index";
 import Head from "../../components/common/head/index";
-import CommentList from "../../components/comment/comment-list/index";
+import CommentList from "../../components/Comment/comment-list/index";
 
 export default class Comment extends Component {
     constructor() {
